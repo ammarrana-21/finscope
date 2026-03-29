@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0F1E">
+
+  <!-- SEO Meta -->
+  <title>FinScope — Free Financial Tools for the Real Economy</title>
+  <meta name="description" content="Free calculators and financial tools for debt payoff, inflation, recession planning, housing, career, and more. Built for the 2026 economy. No sign-up required.">
+  <meta name="keywords" content="financial calculator, debt payoff calculator, inflation calculator, recession calculator, emergency fund calculator, FIRE calculator, free financial tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://finscope.co/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://finscope.co/">
+  <meta property="og:title" content="FinScope — Free Financial Tools for the Real Economy">
+  <meta property="og:description" content="Free calculators and financial tools for debt, inflation, housing, career, and recession planning. No sign-up. No fluff. Just clarity.">
+  <meta property="og:image" content="https://finscope.co/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FinScope — Free Financial Tools for the Real Economy">
+  <meta name="twitter:description" content="Free calculators built for the 2026 economy. Debt, inflation, housing, career, recession planning.">
+
+  <!-- Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "FinScope",
+    "url": "https://finscope.co",
+    "description": "Free financial calculators and tools for debt, inflation, housing, career, and recession planning",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://finscope.co/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FinScope",
+    "url": "https://finscope.co",
+    "logo": "https://finscope.co/logo.png",
+    "sameAs": [],
+    "description": "FinScope provides free, data-driven financial calculators built on government data sources including FRED, BLS, Census, EPA, and more."
+  }
+  </script>
+
+  <!-- Fonts + Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+
+  <!-- AdSense -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <!-- Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+
+  <style>
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(6, 11, 24, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      gap: var(--space-8);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--color-accent), #45B7D1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text-inverse);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-xl);
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .logo-text span { color: var(--color-accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      list-style: none;
+      flex: 1;
+    }
+
+    .nav-links a {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+      background: var(--surface-glass-light);
+    }
+
+    .nav-links a.active { color: var(--color-accent); }
+
+    .nav-cta { display: flex; align-items: center; gap: var(--space-3); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: var(--space-2);
+      cursor: pointer;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      transition: all var(--transition-base);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta .btn-ghost { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--surface-0);
+      z-index: 99;
+      padding: var(--space-6);
+      flex-direction: column;
+      gap: var(--space-2);
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      padding: var(--space-4) var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: all var(--transition-fast);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--text-primary);
+      background: var(--surface-2);
+      border-color: var(--border-subtle);
+    }
+
+    /* ===== TICKER ===== */
+    .ticker-bar {
+      background: var(--surface-1);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: var(--space-2) 0;
+      overflow: hidden;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: var(--space-12);
+      width: max-content;
+      animation: ticker 40s linear infinite;
+    }
+
+    .ticker-track:hover { animation-play-state: paused; }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      white-space: nowrap;
+      font-size: var(--text-xs);
+      font-family: var(--font-mono);
+    }
+
+    .ticker-label { color: var(--text-muted); }
+    .ticker-value { color: var(--text-primary); font-weight: 500; }
+    .ticker-delta { font-weight: 600; }
+    .ticker-delta.up { color: var(--color-positive); }
+    .ticker-delta.down { color: var(--color-danger); }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border-default); }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: var(--space-20) 0 var(--space-16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(0,212,170,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: var(--space-10); }
+      .hero-visual { order: -1; }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .hero-eyebrow-text {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .trust-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--color-accent);
+    }
+
+    /* Hero Visual - Live Dashboard Preview */
+    .hero-visual {
+      position: relative;
+    }
+
+    .dashboard-preview {
+      background: var(--surface-2);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-lg), 0 0 60px rgba(0,212,170,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-preview::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+      opacity: 0.5;
+    }
+
+    .dp-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-5);
+    }
+
+    .dp-title {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .dp-live {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
+      color: var(--color-positive);
+      font-weight: 600;
+    }
+
+    .dp-live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-positive);
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+
+    .dp-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+
+    .dp-stat {
+      background: var(--surface-3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .dp-stat-val {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: var(--space-1);
+    }
+
+    .dp-stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .dp-chart-area {
+      background: var(--surface-3);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      border: 1px solid var(--border-subtle);
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dp-tools {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .dp-tool {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: var(--surface-3);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .dp-tool:hover { border-color: var(--border-accent); }
+
+    .dp-tool-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .dp-tool-text { font-size: var(--text-xs); font-weight: 500; color: var(--text-secondary); }
+
+    /* Floating badge */
+    .floating-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--surface-4);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-accent);
+      white-space: nowrap;
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-header { text-align: center; margin-bottom: var(--space-12); }
+    .section-header h2 { margin-bottom: var(--space-4); }
+    .section-header p { font-size: var(--text-lg); color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    /* ===== CRISIS BANNER ===== */
+    .crisis-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.08) 0%, rgba(245,158,11,0.06) 100%);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6) var(--space-8);
+      margin-bottom: var(--space-12);
+    }
+
+    .crisis-banner-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .crisis-alert {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .crisis-alert-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(239,68,68,0.15);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .crisis-content { flex: 1; min-width: 200px; }
+    .crisis-title { font-size: var(--text-sm); font-weight: 600; color: #FCA5A5; margin-bottom: 2px; }
+    .crisis-body { font-size: var(--text-xs); color: var(--text-secondary); }
+
+    .crisis-metrics {
+      display: flex;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .crisis-metric { text-align: center; }
+    .crisis-metric-val { font-family: var(--font-mono); font-size: var(--text-lg); font-weight: 700; color: #FCA5A5; display: block; }
+    .crisis-metric-label { font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* ===== TOOL CATEGORIES ===== */
+    .category-tabs {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: var(--surface-2);
+      border-color: var(--border-subtle);
+    }
+
+    .tab-btn.active {
+      color: var(--color-accent);
+      background: var(--color-accent-subtle);
+      border-color: var(--border-accent);
+    }
+
+    .tab-count {
+      font-size: 10px;
+      background: var(--surface-3);
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+    }
+
+    .tab-btn.active .tab-count { background: var(--color-accent-glow); color: var(--color-accent); }
+
+    /* Tool Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-5);
+    }
+
+    .tool-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), transparent);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,170,0.05);
+    }
+
+    .tool-card:hover::before { opacity: 1; }
+
+    .tool-card.featured {
+      border-color: var(--border-accent);
+      background: linear-gradient(135deg, var(--surface-2) 0%, rgba(0,212,170,0.04) 100%);
+    }
+
+    .tool-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .tool-badges { display: flex; flex-direction: column; gap: var(--space-1); align-items: flex-end; }
+
+    .tool-title {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .tool-desc {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .tool-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .tool-data-source {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .tool-arrow {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--surface-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .tool-card:hover .tool-arrow {
+      background: var(--color-accent);
+      color: var(--text-inverse);
+      transform: translateX(2px);
+    }
+
+    /* ===== ECONOMIC DASHBOARD SECTION ===== */
+    .econ-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) { .econ-grid { grid-template-columns: 1fr; } }
+
+    .indicator-list { display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .indicator-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-5);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      transition: border-color var(--transition-fast);
+    }
+
+    .indicator-item:hover { border-color: var(--border-default); }
+
+    .indicator-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .indicator-name { font-size: var(--text-sm); font-weight: 500; flex: 1; color: var(--text-secondary); }
+    .indicator-value { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 500; color: var(--text-primary); }
+    .indicator-status { font-size: var(--text-xs); font-weight: 600; }
+
+    .recession-meter {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      text-align: center;
+    }
+
+    .recession-score {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--color-warning);
+      line-height: 1;
+      margin: var(--space-4) 0;
+    }
+
+    .recession-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-4);
+    }
+
+    .gauge-track {
+      height: 8px;
+      background: var(--surface-4);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: var(--space-3);
+    }
+
+    .gauge-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: linear-gradient(90deg, var(--color-positive), var(--color-warning), var(--color-danger));
+      width: 48%;
+    }
+
+    .gauge-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      position: relative;
+    }
+
+    @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.66% + 28px);
+      right: calc(16.66% + 28px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--color-accent), var(--border-subtle), var(--color-accent));
+    }
+
+    @media (max-width: 768px) { .steps-grid::before { display: none; } }
+
+    .step-card { text-align: center; padding: var(--space-6); }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-5);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--color-accent);
+      background: var(--color-accent-subtle);
+    }
+
+    .step-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+    }
+
+    .step-desc { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6; }
+
+    /* ===== DATA SOURCES ===== */
+    .source-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: center;
+    }
+
+    .source-pill {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+
+    .source-pill:hover {
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+    }
+
+    .source-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--surface-2) 0%, rgba(0,212,170,0.05) 50%, var(--surface-2) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-16) var(--space-12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--surface-1);
+      border-top: 1px solid var(--border-subtle);
+      padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-10);
+      margin-bottom: var(--space-10);
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    .footer-brand p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-top: var(--space-4);
+      max-width: 280px;
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .footer-links { display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .footer-links a {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover { color: var(--color-accent); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+
+    .footer-disclaimer {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding: var(--space-4);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      margin-top: var(--space-6);
+    }
+
+    /* ===== AD SLOTS POSITIONED ===== */
+    .ad-banner { margin: var(--space-8) 0; }
+    .ad-sidebar { position: sticky; top: calc(var(--nav-height) + var(--space-4)); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== TICKER BAR ===== -->
+  <div class="ticker-bar" aria-label="Live economic indicators">
+    <div class="ticker-track">
+      <!-- First set -->
+      <div class="ticker-item">
+        <span class="ticker-label">OIL (Brent)</span>
+        <span class="ticker-value">$108.42</span>
+        <span class="ticker-delta up">▲ +2.8%</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">US CPI</span>
+        <span class="ticker-value">3.2%</span>
+        <span class="ticker-delta down">▲ YoY</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Recession Risk</span>
+        <span class="ticker-value">48%</span>
+        <span class="ticker-delta down">▲ elevated</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Fed Rate</span>
+        <span class="ticker-value">5.25%</span>
+        <span class="ticker-delta">— hold</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Avg CC APR</span>
+        <span class="ticker-value">22.3%</span>
+        <span class="ticker-delta down">▲ record</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Gas (US Avg)</span>
+        <span class="ticker-value">$4.18/gal</span>
+        <span class="ticker-delta down">▲ +33% MoM</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Unemployment</span>
+        <span class="ticker-value">4.4%</span>
+        <span class="ticker-delta down">▲ rising</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">10Y Treasury</span>
+        <span class="ticker-value">4.68%</span>
+        <span class="ticker-delta up">▼ -0.12%</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="ticker-item">
+        <span class="ticker-label">OIL (Brent)</span>
+        <span class="ticker-value">$108.42</span>
+        <span class="ticker-delta up">▲ +2.8%</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">US CPI</span>
+        <span class="ticker-value">3.2%</span>
+        <span class="ticker-delta down">▲ YoY</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Recession Risk</span>
+        <span class="ticker-value">48%</span>
+        <span class="ticker-delta down">▲ elevated</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Fed Rate</span>
+        <span class="ticker-value">5.25%</span>
+        <span class="ticker-delta">— hold</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Avg CC APR</span>
+        <span class="ticker-value">22.3%</span>
+        <span class="ticker-delta down">▲ record</span>
+      </div>
+      <div class="ticker-dot"></div>
+      <div class="ticker-item">
+        <span class="ticker-label">Gas (US Avg)</span>
+        <span class="ticker-value">$4.18/gal</span>
+        <span class="ticker-delta down">▲ +33% MoM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="FinScope home">
+          <div class="logo-mark" aria-hidden="true">FS</div>
+          <span class="logo-text">Fin<span>Scope</span></span>
+        </a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="/calculators/recession/" class="active">Recession Tools</a></li>
+          <li><a href="/calculators/debt/">Debt</a></li>
+          <li><a href="/calculators/housing/">Housing</a></li>
+          <li><a href="/calculators/career/">Career</a></li>
+          <li><a href="/calculators/global/">Global</a></li>
+          <li><a href="/data/">Live Data</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a href="/calculators/" class="btn btn-primary btn-sm">All Tools →</a>
+          <button class="nav-hamburger" aria-label="Open menu" id="menuBtn">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+    <a href="/calculators/recession/">Recession Tools</a>
+    <a href="/calculators/debt/">Debt Calculators</a>
+    <a href="/calculators/housing/">Housing Tools</a>
+    <a href="/calculators/career/">Career & Income</a>
+    <a href="/calculators/health/">Health & Environment</a>
+    <a href="/calculators/global/">Global Tools</a>
+    <a href="/data/">Live Economic Data</a>
+    <div style="margin-top: auto; padding-top: 2rem;">
+      <a href="/calculators/" class="btn btn-primary" style="width:100%; justify-content:center;">Browse All 42 Tools →</a>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-inner">
+
+          <!-- Left: Copy -->
+          <div class="hero-content">
+            <div class="hero-eyebrow" data-animate>
+              <div class="hero-eyebrow-dot" aria-hidden="true"></div>
+              <span class="hero-eyebrow-text">Free financial tools — no sign-up required</span>
+            </div>
+
+            <h1 class="hero-title" id="hero-title" data-animate data-delay="1">
+              Financial clarity<br>
+              for <span class="text-gradient">uncertain times</span>
+            </h1>
+
+            <p class="hero-subtitle" data-animate data-delay="2">
+              42 free calculators and data tools built on government data — for debt, inflation, recession planning, housing, career, and more. Real numbers. Plain language. No upsells.
+            </p>
+
+            <div class="hero-actions" data-animate data-delay="3">
+              <a href="/calculators/" class="btn btn-primary btn-lg">
+                Explore all tools
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="/data/recession-probability/" class="btn btn-ghost btn-lg">
+                Live recession tracker
+              </a>
+            </div>
+
+            <div class="hero-trust" data-animate data-delay="4">
+              <div class="trust-item">
+                <svg class="trust-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M7 1L8.8 5.2L13.5 5.5L10 8.7L11.1 13.5L7 11L2.9 13.5L4 8.7L0.5 5.5L5.2 5.2L7 1Z" fill="currentColor"/>
+                </svg>
+                <span>Data from FRED, BLS, Census, EPA</span>
+              </div>
+              <div class="trust-item">
+                <svg class="trust-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <rect x="1" y="3" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                  <path d="M1 6h12" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+                <span>No account needed</span>
+              </div>
+              <div class="trust-item">
+                <svg class="trust-icon" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                <span>Always free</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Dashboard Preview -->
+          <div class="hero-visual" data-animate data-delay="2" aria-hidden="true">
+            <div class="floating-badge">Updated daily with live data</div>
+            <div class="dashboard-preview">
+              <div class="dp-header">
+                <span class="dp-title">Economic Health Dashboard</span>
+                <div class="dp-live">
+                  <div class="dp-live-dot"></div>
+                  <span>LIVE</span>
+                </div>
+              </div>
+
+              <div class="dp-stats">
+                <div class="dp-stat">
+                  <div class="dp-stat-val" style="color: var(--color-danger);">48%</div>
+                  <div class="dp-stat-label">Recession risk</div>
+                </div>
+                <div class="dp-stat">
+                  <div class="dp-stat-val" style="color: var(--color-warning);">$108</div>
+                  <div class="dp-stat-label">Brent oil/bbl</div>
+                </div>
+                <div class="dp-stat">
+                  <div class="dp-stat-val" style="color: var(--color-positive);">3.2%</div>
+                  <div class="dp-stat-label">CPI inflation</div>
+                </div>
+              </div>
+
+              <div class="dp-chart-area">
+                <svg class="chart-svg" viewBox="0 0 360 100" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#00D4AA" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="#00D4AA" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 70 C40 65 60 50 90 48 C120 46 140 55 170 42 C200 30 220 35 250 28 C280 22 310 30 360 20" stroke="#00D4AA" stroke-width="2" fill="none"/>
+                  <path d="M0 70 C40 65 60 50 90 48 C120 46 140 55 170 42 C200 30 220 35 250 28 C280 22 310 30 360 20 L360 100 L0 100Z" fill="url(#chartGrad)"/>
+                  <circle cx="250" cy="28" r="4" fill="#00D4AA"/>
+                  <circle cx="360" cy="20" r="4" fill="#00D4AA" opacity="0.6"/>
+                </svg>
+              </div>
+
+              <div class="dp-tools">
+                <div class="dp-tool">
+                  <div class="dp-tool-icon" style="background: rgba(239,68,68,0.1);">🛢</div>
+                  <div class="dp-tool-text">Oil impact calculator</div>
+                </div>
+                <div class="dp-tool">
+                  <div class="dp-tool-icon" style="background: rgba(245,158,11,0.1);">💰</div>
+                  <div class="dp-tool-text">Tariff cost calculator</div>
+                </div>
+                <div class="dp-tool">
+                  <div class="dp-tool-icon" style="background: rgba(0,212,170,0.1);">🏦</div>
+                  <div class="dp-tool-text">Emergency fund tool</div>
+                </div>
+                <div class="dp-tool">
+                  <div class="dp-tool-icon" style="background: rgba(59,130,246,0.1);">📊</div>
+                  <div class="dp-tool-text">Debt payoff planner</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AD SLOT: Below Hero ===== -->
+    <div class="container">
+      <div class="ad-banner" aria-label="Advertisement">
+        <div class="ad-slot" style="min-height: 90px;">
+          <!-- AdSense: 728x90 Leaderboard -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CRISIS ALERT BANNER ===== -->
+    <section class="section-sm" aria-label="Current economic alerts">
+      <div class="container">
+        <div class="crisis-banner" data-animate>
+          <div class="crisis-banner-inner">
+            <div class="crisis-alert">
+              <div class="crisis-alert-icon" aria-hidden="true">⚠</div>
+            </div>
+            <div class="crisis-content">
+              <div class="crisis-title">Economic alerts — March 2026</div>
+              <div class="crisis-body">Iran war disrupting Strait of Hormuz. Oil above $100. Goldman Sachs raises recession odds to 25%. Tariffs adding $2,400/yr per household.</div>
+            </div>
+            <div class="crisis-metrics">
+              <div class="crisis-metric">
+                <span class="crisis-metric-val">+$2,400</span>
+                <span class="crisis-metric-label">Tariff cost/yr</span>
+              </div>
+              <div class="crisis-metric">
+                <span class="crisis-metric-val">+33%</span>
+                <span class="crisis-metric-label">Gas in 30 days</span>
+              </div>
+              <div class="crisis-metric">
+                <span class="crisis-metric-val">25%</span>
+                <span class="crisis-metric-label">Recession odds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TOOL CATEGORIES ===== -->
+    <section class="section" aria-labelledby="tools-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">42 free tools</span>
+          <h2 id="tools-heading">Built for what's happening right now</h2>
+          <p>Every tool is built on verified government data — BLS, FRED, Census, EPA, and more. Updated automatically. No account needed.</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs" role="tablist" aria-label="Tool categories">
+          <button class="tab-btn active" role="tab" aria-selected="true" data-category="urgent">
+            🔴 Urgent
+            <span class="tab-count">5</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-category="debt">
+            Debt
+            <span class="tab-count">7</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-category="housing">
+            Housing
+            <span class="tab-count">6</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-category="career">
+            Career
+            <span class="tab-count">6</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-category="health">
+            Health
+            <span class="tab-count">5</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-category="global">
+            Global
+            <span class="tab-count">5</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-category="life">
+            Daily Life
+            <span class="tab-count">8</span>
+          </button>
+        </div>
+
+        <!-- Tools Grid -->
+        <div class="tools-grid" id="toolsGrid">
+
+          <!-- URGENT TOOLS -->
+          <a href="/calculators/recession/oil-price-impact/" class="tool-card featured" data-category="urgent" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(239,68,68,0.12);" aria-hidden="true">🛢</div>
+              <div class="tool-badges">
+                <span class="badge badge-danger">Urgent</span>
+                <span class="badge badge-accent">Live data</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Oil Price Impact Calculator</h3>
+              <p class="tool-desc">With oil above $100 from the Iran war, see exactly how much more you'll spend this year on gas, groceries, heating, and flights.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">
+                <span>EIA + FRED</span>
+              </div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/recession/tariff-calculator/" class="tool-card featured" data-category="urgent" data-animate data-delay="1">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(245,158,11,0.12);" aria-hidden="true">🧾</div>
+              <div class="tool-badges">
+                <span class="badge badge-warning">Hot</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Personal Tariff Cost Calculator</h3>
+              <p class="tool-desc">US tariffs are costing the average household $2,400/year. Calculate your personal tariff bill based on your actual spending habits.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">FRED + BLS</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/recession/emergency-fund/" class="tool-card" data-category="urgent" data-animate data-delay="2">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(0,212,170,0.12);" aria-hidden="true">🛡</div>
+              <div class="tool-badges">
+                <span class="badge badge-accent">Popular</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Emergency Fund Calculator</h3>
+              <p class="tool-desc">Find out exactly how much you need saved, and how long it'll take to get there — tailored to your income, expenses, and local cost of living.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">BLS + client-side</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/recession/job-loss-runway/" class="tool-card" data-category="urgent" data-animate data-delay="3">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(239,68,68,0.12);" aria-hidden="true">📉</div>
+              <div class="tool-badges">
+                <span class="badge badge-danger">Urgent</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Job Loss Runway Calculator</h3>
+              <p class="tool-desc">If you lost your job today, how long would your savings last? What should you cut first? Get a clear 30-day plan instantly.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">Client-side</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/data/recession-probability/" class="tool-card" data-category="urgent" data-animate data-delay="4">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(59,130,246,0.12);" aria-hidden="true">📡</div>
+              <div class="tool-badges">
+                <span class="badge badge-info">Live</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Recession Probability Dashboard</h3>
+              <p class="tool-desc">8 real-time indicators from the Federal Reserve — yield curve, unemployment claims, consumer sentiment, PMI — combined into one clear signal.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">FRED API</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <!-- DEBT TOOLS -->
+          <a href="/calculators/debt/debt-payoff/" class="tool-card featured" data-category="debt" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(139,92,246,0.12);" aria-hidden="true">💳</div>
+              <div class="tool-badges">
+                <span class="badge badge-accent">Most used</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Debt Payoff Calculator</h3>
+              <p class="tool-desc">Avalanche vs snowball — side by side, for your actual debts. See which method saves you more money and gets you debt-free faster.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">Client-side</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/debt/credit-card/" class="tool-card" data-category="debt" data-animate data-delay="1">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(239,68,68,0.12);" aria-hidden="true">💰</div>
+            </div>
+            <div>
+              <h3 class="tool-title">Credit Card Interest Calculator</h3>
+              <p class="tool-desc">At 22.3% average APR, see how much your credit card is actually costing you — and what happens if you pay just $50 more per month.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">FRED + client</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/debt/student-loan/" class="tool-card" data-category="debt" data-animate data-delay="2">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(245,158,11,0.12);" aria-hidden="true">🎓</div>
+              <div class="tool-badges">
+                <span class="badge badge-warning">Updated</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Student Loan GPS</h3>
+              <p class="tool-desc">SAVE plan is gone. New RAP plan starts July 2026. Find your best repayment option, your forgiveness timeline, and your tax exposure.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">DoE + IRS data</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <!-- HOUSING TOOLS -->
+          <a href="/calculators/housing/rent-vs-buy/" class="tool-card featured" data-category="housing" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(0,212,170,0.12);" aria-hidden="true">🏠</div>
+              <div class="tool-badges">
+                <span class="badge badge-accent">Popular</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Rent vs Buy Truth Calculator</h3>
+              <p class="tool-desc">Not just mortgage vs rent — we include property tax, maintenance, insurance, opportunity cost, and 30-year wealth scenarios. The real answer.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">FRED + HUD + Zillow</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/housing/climate-risk/" class="tool-card" data-category="housing" data-animate data-delay="1">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(59,130,246,0.12);" aria-hidden="true">🌊</div>
+            </div>
+            <div>
+              <h3 class="tool-title">Climate Risk Report Card</h3>
+              <p class="tool-desc">Enter any US address — get flood, wildfire, extreme heat, and hurricane risk scores, plus projected insurance cost trajectory over 20 years.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">FEMA + NOAA</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <!-- CAREER TOOLS -->
+          <a href="/calculators/career/ai-job-risk/" class="tool-card featured" data-category="career" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(139,92,246,0.12);" aria-hidden="true">🤖</div>
+              <div class="tool-badges">
+                <span class="badge badge-accent">Trending</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">AI Job Displacement Scorecard</h3>
+              <p class="tool-desc">Enter your job title — see your automation risk score, which of your tasks are most at risk, and exactly which skills protect you.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">O*NET + BLS</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/career/salary-checker/" class="tool-card" data-category="career" data-animate data-delay="1">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(16,185,129,0.12);" aria-hidden="true">📊</div>
+            </div>
+            <div>
+              <h3 class="tool-title">Salary Reality Checker</h3>
+              <p class="tool-desc">Compare your salary against BLS government wage data by occupation and metro area. Find out where you stand — and what to ask for.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">BLS OES data</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <!-- HEALTH TOOLS -->
+          <a href="/calculators/health/water-safety/" class="tool-card" data-category="health" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(59,130,246,0.12);" aria-hidden="true">💧</div>
+              <div class="tool-badges">
+                <span class="badge badge-info">Viral</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Is My Water Safe? Checker</h3>
+              <p class="tool-desc">Enter your zip code — see what contaminants are in your tap water, PFAS levels, lead pipe risk, and which filters actually remove them.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">EPA + USGS</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <a href="/calculators/health/drug-prices/" class="tool-card" data-category="health" data-animate data-delay="1">
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(239,68,68,0.12);" aria-hidden="true">💊</div>
+            </div>
+            <div>
+              <h3 class="tool-title">Drug Price Comparison</h3>
+              <p class="tool-desc">Compare prescription prices across pharmacies, find generic alternatives, and discover manufacturer coupons — all in one search.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">openFDA + NLM</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <!-- GLOBAL TOOLS -->
+          <a href="/calculators/global/cost-of-living/" class="tool-card featured" data-category="global" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(0,212,170,0.12);" aria-hidden="true">🌍</div>
+              <div class="tool-badges">
+                <span class="badge badge-accent">Global</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Global Cost of Living Comparison</h3>
+              <p class="tool-desc">Your $5K/month remote salary goes how far in Lisbon vs Bangkok vs Medellín? Real lifestyle comparison across 100+ cities worldwide.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">World Bank + Numbeo</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+          <!-- DAILY LIFE -->
+          <a href="/calculators/life/subscription-audit/" class="tool-card" data-category="life" data-animate>
+            <div class="tool-card-header">
+              <div class="tool-icon" style="background: rgba(245,158,11,0.12);" aria-hidden="true">🔍</div>
+              <div class="tool-badges">
+                <span class="badge badge-accent">No bank link</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="tool-title">Subscription Audit Tool</h3>
+              <p class="tool-desc">Upload your bank statement CSV (processed locally, never sent to servers) — find forgotten subscriptions, price increases, and free trials about to charge.</p>
+            </div>
+            <div class="tool-footer">
+              <div class="tool-data-source">Client-side only</div>
+              <div class="tool-arrow" aria-hidden="true">→</div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- View All Link -->
+        <div style="text-align: center; margin-top: var(--space-10);" data-animate>
+          <a href="/calculators/" class="btn btn-ghost btn-lg">
+            View all 42 tools
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== AD SLOT: Mid-page ===== -->
+    <div class="container">
+      <div class="ad-banner" aria-label="Advertisement">
+        <div class="ad-slot" style="min-height: 250px;">
+          <!-- AdSense: 300x250 Rectangle -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== LIVE ECONOMIC INDICATORS ===== -->
+    <section class="section" style="background: var(--surface-1); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);" aria-labelledby="indicators-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Live from FRED & BLS</span>
+          <h2 id="indicators-heading">The economic picture, right now</h2>
+          <p>Key indicators updated automatically from government sources. No spin, no editorializing — just the data.</p>
+        </div>
+
+        <div class="econ-grid">
+          <div>
+            <div class="indicator-list">
+
+              <div class="indicator-item" data-animate>
+                <div class="indicator-dot" style="background: var(--color-danger);" aria-hidden="true"></div>
+                <span class="indicator-name">Recession probability (yield curve)</span>
+                <span class="indicator-value">48%</span>
+                <span class="indicator-status" style="color: var(--color-danger);">Elevated</span>
+              </div>
+
+              <div class="indicator-item" data-animate data-delay="1">
+                <div class="indicator-dot" style="background: var(--color-danger);" aria-hidden="true"></div>
+                <span class="indicator-name">Brent crude oil price</span>
+                <span class="indicator-value">$108.42</span>
+                <span class="indicator-status" style="color: var(--color-danger);">↑ War shock</span>
+              </div>
+
+              <div class="indicator-item" data-animate data-delay="2">
+                <div class="indicator-dot" style="background: var(--color-warning);" aria-hidden="true"></div>
+                <span class="indicator-name">US CPI (annual inflation)</span>
+                <span class="indicator-value">3.2%</span>
+                <span class="indicator-status" style="color: var(--color-warning);">Above target</span>
+              </div>
+
+              <div class="indicator-item" data-animate data-delay="3">
+                <div class="indicator-dot" style="background: var(--color-warning);" aria-hidden="true"></div>
+                <span class="indicator-name">Unemployment rate</span>
+                <span class="indicator-value">4.4%</span>
+                <span class="indicator-status" style="color: var(--color-warning);">Rising</span>
+              </div>
+
+              <div class="indicator-item" data-animate data-delay="4">
+                <div class="indicator-dot" style="background: var(--color-warning);" aria-hidden="true"></div>
+                <span class="indicator-name">Average credit card APR</span>
+                <span class="indicator-value">22.3%</span>
+                <span class="indicator-status" style="color: var(--color-danger);">Record high</span>
+              </div>
+
+              <div class="indicator-item" data-animate data-delay="5">
+                <div class="indicator-dot" style="background: var(--color-positive);" aria-hidden="true"></div>
+                <span class="indicator-name">Federal funds rate</span>
+                <span class="indicator-value">5.25%</span>
+                <span class="indicator-status" style="color: var(--color-positive);">Hold</span>
+              </div>
+
+              <div class="indicator-item" data-animate data-delay="6">
+                <div class="indicator-dot" style="background: var(--color-danger);" aria-hidden="true"></div>
+                <span class="indicator-name">Consumer confidence index</span>
+                <span class="indicator-value">72.9</span>
+                <span class="indicator-status" style="color: var(--color-danger);">Near record low</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Recession Meter -->
+          <div class="recession-meter" data-animate data-delay="2">
+            <div class="dp-live" style="justify-content: center; margin-bottom: var(--space-2);">
+              <div class="dp-live-dot"></div>
+              <span style="font-size: var(--text-xs);">LIVE — updated daily</span>
+            </div>
+            <h3 style="font-size: var(--text-sm); color: var(--text-secondary); font-weight: 500; font-family: var(--font-body);">Recession probability</h3>
+            <div class="recession-score" aria-label="Recession probability 48 percent">48%</div>
+            <div class="recession-label">Based on yield curve inversion, initial claims, PMI, consumer sentiment</div>
+            <div class="gauge-track" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100">
+              <div class="gauge-fill"></div>
+            </div>
+            <div class="gauge-labels">
+              <span>Low</span>
+              <span>Moderate</span>
+              <span>High</span>
+            </div>
+            <div style="margin-top: var(--space-5);">
+              <a href="/data/recession-probability/" class="btn btn-ghost" style="width: 100%; justify-content: center;">
+                Full dashboard →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Why trust our tools</span>
+          <h2 id="how-heading">Built differently</h2>
+          <p>Not estimates. Not surveys. Government data, recalculated for your situation in real time.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card" data-animate>
+            <div class="step-number" aria-hidden="true">1</div>
+            <h3 class="step-title">Government data at the source</h3>
+            <p class="step-desc">Every number comes directly from FRED, BLS, Census, EPA, FEMA, or other official APIs — not estimates, not surveys, not paid partnerships.</p>
+          </div>
+          <div class="step-card" data-animate data-delay="2">
+            <div class="step-number" aria-hidden="true">2</div>
+            <h3 class="step-title">Personalized to your situation</h3>
+            <p class="step-desc">We don't show national averages. We calculate your specific number — your income, your city, your debts, your spending — in seconds.</p>
+          </div>
+          <div class="step-card" data-animate data-delay="4">
+            <div class="step-number" aria-hidden="true">3</div>
+            <h3 class="step-title">Plain language, real guidance</h3>
+            <p class="step-desc">Every result comes with a clear "what this means for you" explanation and specific next steps — not generic advice, but actionable guidance.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== DATA SOURCES ===== -->
+    <section class="section-sm" style="border-top: 1px solid var(--border-subtle);" aria-labelledby="sources-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Verified sources</span>
+          <h2 id="sources-heading" style="font-size: var(--text-3xl);">Data you can trust</h2>
+          <p>Every tool is powered by official government and institutional data — updated automatically, cited transparently.</p>
+        </div>
+
+        <div class="source-pills" data-animate>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>Federal Reserve (FRED)</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>Bureau of Labor Statistics</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>US Census Bureau</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>EPA Environmental Data</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>FEMA National Risk Index</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>Dept of Energy (EIA)</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>openFDA Drug Database</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>HUD Housing Data</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>DoE College Scorecard</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>NOAA Climate Data</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>O*NET Occupation Data</div>
+          <div class="source-pill"><div class="source-dot" aria-hidden="true"></div>World Bank Open Data</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section" aria-label="Get started">
+      <div class="container">
+        <div class="cta-section" data-animate>
+          <span class="section-eyebrow">Get started — free, no sign-up</span>
+          <h2 style="margin-bottom: var(--space-4);">Know exactly where you stand</h2>
+          <p style="color: var(--text-secondary); font-size: var(--text-lg); margin-bottom: var(--space-8); max-width: 500px; margin-left: auto; margin-right: auto;">
+            Start with the tool that matters most to you right now. No account. No email. No upsell. Just clarity.
+          </p>
+          <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+            <a href="/calculators/recession/emergency-fund/" class="btn btn-primary btn-xl">Check my emergency fund</a>
+            <a href="/calculators/" class="btn btn-ghost btn-xl">Browse all 42 tools</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AD SLOT: Pre-footer ===== -->
+    <div class="container" style="margin-bottom: var(--space-8);">
+      <div class="ad-slot" style="min-height: 90px;" aria-label="Advertisement">
+        <!-- AdSense: 728x90 Leaderboard -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="FinScope home">
+            <div class="logo-mark" aria-hidden="true">FS</div>
+            <span class="logo-text">Fin<span>Scope</span></span>
+          </a>
+          <p>Free financial tools built on government data for the 2026 economy. No sign-up required. No upsells. Just clarity when you need it most.</p>
+        </div>
+
+        <div>
+          <div class="footer-heading">Crisis tools</div>
+          <nav class="footer-links" aria-label="Crisis tools links">
+            <a href="/calculators/recession/oil-price-impact/">Oil Price Impact</a>
+            <a href="/calculators/recession/tariff-calculator/">Tariff Calculator</a>
+            <a href="/calculators/recession/emergency-fund/">Emergency Fund</a>
+            <a href="/calculators/recession/job-loss-runway/">Job Loss Runway</a>
+            <a href="/data/recession-probability/">Recession Dashboard</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-heading">Popular tools</div>
+          <nav class="footer-links" aria-label="Popular tools links">
+            <a href="/calculators/debt/debt-payoff/">Debt Payoff Calculator</a>
+            <a href="/calculators/housing/rent-vs-buy/">Rent vs Buy Calculator</a>
+            <a href="/calculators/career/ai-job-risk/">AI Job Risk Score</a>
+            <a href="/calculators/debt/student-loan/">Student Loan GPS</a>
+            <a href="/calculators/global/cost-of-living/">Global Cost of Living</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-heading">Company</div>
+          <nav class="footer-links" aria-label="Company links">
+            <a href="/about/">About FinScope</a>
+            <a href="/methodology/">Our Methodology</a>
+            <a href="/data-sources/">Data Sources</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Use</a>
+            <a href="/disclaimer/">Disclaimer</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" role="note">
+        <strong>Financial Disclaimer:</strong> FinScope tools are for informational and educational purposes only. All calculations are estimates based on publicly available government data. Nothing on this site constitutes financial, legal, or investment advice. Always consult a qualified professional for your specific situation. Data sources include FRED (Federal Reserve Bank of St. Louis), Bureau of Labor Statistics, US Census Bureau, EPA, FEMA, EIA, and other official government APIs.
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 FinScope. Built on open government data.</span>
+        <span>Data updated daily from FRED, BLS, EPA, and US Census</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      menuBtn.setAttribute('aria-expanded', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+
+    // Close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Category tabs
+    const tabs = document.querySelectorAll('.tab-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const cat = tab.dataset.category;
+
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        toolCards.forEach(card => {
+          if (cat === 'urgent' || card.dataset.category === cat) {
+            card.style.display = 'flex';
+          } else if (cat !== 'urgent') {
+            card.style.display = card.dataset.category === cat ? 'flex' : 'none';
+          }
+        });
+      });
+    });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  </script>
+<script src="/js/live-data.js"></script>
+</body>
+</html>

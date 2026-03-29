@@ -1,0 +1,66 @@
+{
+  "lastUpdated": "2026-03-29",
+  "lastUpdatedISO": "2026-03-29T07:00:00.000Z",
+  "successRate": "15/15",
+  "coverageGeography": "United States (oil price is global Brent benchmark)",
+  "dataProviders": ["FRED (St. Louis Fed)", "BLS (Dept of Labor)", "EIA (Dept of Energy)"],
+  "note": "Auto-updated daily by GitHub Actions. Do not edit manually.",
+
+  "recession_probability": 48.3,
+  "fed_rate": 5.33,
+  "unemployment": 4.4,
+  "credit_card_apr": 22.3,
+  "consumer_sentiment": 72.9,
+  "treasury_yield_10y": 4.68,
+  "jobless_claims_weekly": 224000,
+  "mortgage_rate_30y": 6.82,
+  "m2_money_supply_yoy": 3.1,
+
+  "cpi_annual": 3.2,
+  "cpi_food_yoy": 2.8,
+  "cpi_shelter_yoy": 4.9,
+  "cpi_energy_yoy": 8.4,
+
+  "oil_price_brent": 108.42,
+  "gas_price_us": 4.18,
+
+  "tariff_household_annual": 2630,
+
+  "sources": {
+    "recession_probability":   "FRED: RECPROUSM156N — NY Fed probit model",
+    "fed_rate":                "FRED: DFF — Federal funds effective rate",
+    "unemployment":            "FRED: UNRATE — BLS monthly (seasonally adj.)",
+    "credit_card_apr":         "FRED: TERMCBCCALLNS — Fed Reserve H.15",
+    "consumer_sentiment":      "FRED: UMCSENT — University of Michigan",
+    "treasury_yield_10y":      "FRED: DGS10 — US Treasury daily yield curve",
+    "jobless_claims_weekly":   "FRED: ICSA — DOL initial claims (weekly)",
+    "mortgage_rate_30y":       "FRED: MORTGAGE30US — Freddie Mac PMMS",
+    "m2_money_supply_yoy":     "FRED: M2SL — Board of Governors (YoY calc)",
+    "cpi_annual":              "BLS: CUUR0000SA0 — CPI-U All Items (YoY calc)",
+    "cpi_food_yoy":            "BLS: CUUR0000SAF11 — CPI Food at Home (YoY)",
+    "cpi_shelter_yoy":         "BLS: CUUR0000SAH1 — CPI Shelter (YoY)",
+    "cpi_energy_yoy":          "BLS: CUUR0000SA0E — CPI Energy (YoY)",
+    "oil_price_brent":         "EIA: RBRTE — Europe Brent Spot Price FOB (GLOBAL)",
+    "gas_price_us":            "EIA: EMM_EPMR_PTE_NUS — US regular gas weekly",
+    "tariff_household_annual": "Derived: Yale Budget Lab methodology + BLS CPI"
+  },
+
+  "updateFrequency": {
+    "recession_probability":   "Monthly",
+    "fed_rate":                "Daily (business days)",
+    "unemployment":            "Monthly (first Friday)",
+    "credit_card_apr":         "Monthly",
+    "consumer_sentiment":      "Monthly",
+    "treasury_yield_10y":      "Daily (business days)",
+    "jobless_claims_weekly":   "Weekly (Thursdays)",
+    "mortgage_rate_30y":       "Weekly (Thursdays)",
+    "m2_money_supply_yoy":     "Monthly",
+    "cpi_annual":              "Monthly (~10th of month)",
+    "cpi_food_yoy":            "Monthly",
+    "cpi_shelter_yoy":         "Monthly",
+    "cpi_energy_yoy":          "Monthly",
+    "oil_price_brent":         "Daily (trading days) — GLOBAL",
+    "gas_price_us":            "Weekly (Mondays)",
+    "tariff_household_annual": "Monthly"
+  }
+}

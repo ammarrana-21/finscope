@@ -1,0 +1,58 @@
+name: Daily Economic Data Update
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-economic-data:
+    name: Fetch live data from FRED, BLS, EIA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create data directory if needed
+        run: mkdir -p data
+
+      - name: Run data fetcher
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY:  ${{ secrets.EIA_API_KEY }}
+          BLS_API_KEY:  ${{ secrets.BLS_API_KEY }}
+        run: node scripts/fetch-data.js
+
+      - name: Check if data changed
+        id: diff
+        run: |
+          git diff --quiet data/live.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data to GitHub
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "FinScope Bot"
+          git config user.email "bot@finscope.co"
+          git add data/live.json
+          git commit -m "Daily data update"
+          git push
+          echo "Committed! Cloudflare Pages is rebuilding now."
+
+      - name: Nothing changed
+        if: steps.diff.outputs.changed == 'false'
+        run: echo "Data identical to yesterday, skipping commit"
+
+      - name: Print live.json contents
+        if: always()
+        run: cat data/live.json || echo "File not found"

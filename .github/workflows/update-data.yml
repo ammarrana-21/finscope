@@ -1,0 +1,108 @@
+name: Daily Economic Data Update
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-economic-data:
+    name: Fetch live data from FRED, BLS, EIA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create data directory if needed
+        run: mkdir -p data
+
+      - name: Run data fetcher
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY:  ${{ secrets.EIA_API_KEY }}
+          BLS_API_KEY:  ${{ secrets.BLS_API_KEY }}
+        run: node scripts/fetch-data.js
+
+      - name: Check if data changed
+        id: diff
+        run: |
+          git diff --quiet data/live.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data to GitHub
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "FinScope Bot"
+          git config user.email "bot@finscope.co"
+          git add data/live.json
+          git commit -m "📊 Daily data update — $(date -u +%Y-%m-%d)"
+          git push
+          echo "✅ Committed! Cloudflare Pages is rebuilding now."
+
+      - name: Nothing changed
+        if: steps.diff.outputs.changed == 'false'
+        run: echo "ℹ️ Data identical to yesterday — skipping commit"
+
+      - name: Print live.json contents
+        if: always()
+        run: cat data/live.json || echo "File not found"
+```
+---
+
+5. Scroll down, click **"Commit new file"**
+
+That's file 1 done. GitHub created `.github/workflows/update-data.yml` and both folders automatically.
+
+---
+
+**File 2 — The fetch script**
+
+1. Click **"Add file"** → **"Create new file"** again
+2. In the filename box type:
+```
+scripts/fetch-data.js
+```
+
+3. Paste the entire contents of `fetch-data.js` from the zip file into the text area
+4. Click **"Commit new file"**
+
+---
+
+**File 3 — The starting data file**
+
+1. Click **"Add file"** → **"Create new file"** again
+2. In the filename box type:
+```
+data/live.json
+```
+
+3. Paste the entire contents of `live.json` from the zip file
+4. Click **"Commit new file"**
+
+---
+
+**After those three files are created, your repository should look like this:**
+```
+finscope/
+├── .github/
+│   └── workflows/
+│       └── update-data.yml   ← the robot's schedule
+├── data/
+│   └── live.json             ← the data file
+├── scripts/
+│   └── fetch-data.js         ← the robot's brain
+├── css/
+│   └── design-system.css
+├── calculators/
+│   └── ...
+└── index.html

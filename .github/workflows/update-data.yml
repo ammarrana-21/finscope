@@ -56,3 +56,4 @@ jobs:
       - name: Print live.json contents
         if: always()
         run: cat data/live.json || echo "File not found"
+        

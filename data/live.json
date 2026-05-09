@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-05-08",
-  "lastUpdatedISO": "2026-05-08T08:17:00.552Z",
+  "lastUpdated": "2026-05-09",
+  "lastUpdatedISO": "2026-05-09T08:23:13.331Z",
   "successRate": "15/15",
   "coverageGeography": "United States (oil price is global Brent benchmark)",
   "dataProviders": [
@@ -9,11 +9,11 @@
     "EIA (Dept of Energy)"
   ],
   "recession_probability": 1.82,
-  "fed_rate": 3.64,
+  "fed_rate": 3.63,
   "unemployment": 4.3,
   "credit_card_apr": 21,
   "consumer_sentiment": 53.3,
-  "treasury_yield_10y": 4.36,
+  "treasury_yield_10y": 4.41,
   "jobless_claims_weekly": 200000,
   "mortgage_rate_30y": 6.37,
   "m2_money_supply_yoy": 4.57,

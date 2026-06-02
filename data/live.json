@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-01",
-  "lastUpdatedISO": "2026-06-01T12:27:54.276Z",
+  "lastUpdated": "2026-06-02",
+  "lastUpdatedISO": "2026-06-02T11:10:23.129Z",
   "successRate": "15/15",
   "coverageGeography": "United States (oil price is global Brent benchmark)",
   "dataProviders": [
@@ -8,7 +8,7 @@
     "BLS (Dept of Labor)",
     "EIA (Dept of Energy)"
   ],
-  "recession_probability": 1.82,
+  "recession_probability": 0.44,
   "fed_rate": 3.62,
   "unemployment": 4.3,
   "credit_card_apr": 21,

@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-30",
-  "lastUpdatedISO": "2026-06-30T10:21:51.833Z",
+  "lastUpdated": "2026-07-01",
+  "lastUpdatedISO": "2026-07-01T10:36:43.251Z",
   "successRate": "15/15",
   "coverageGeography": "United States (oil price is global Brent benchmark)",
   "dataProviders": [
@@ -22,7 +22,7 @@
   "cpi_shelter_yoy": 3.37,
   "cpi_energy_yoy": 23.54,
   "oil_price_brent": 76.49,
-  "gas_price_us": 4.05,
+  "gas_price_us": 3.96,
   "tariff_household_annual": 2868,
   "sources": {
     "recession_probability": "FRED: RECPROUSM156N — NY Fed probit model",

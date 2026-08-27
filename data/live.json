@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-26",
-  "lastUpdatedISO": "2026-08-26T07:36:01.512Z",
+  "lastUpdated": "2026-08-27",
+  "lastUpdatedISO": "2026-08-27T17:57:06.298Z",
   "successRate": "15/15",
   "coverageGeography": "United States (oil price is global Brent benchmark)",
   "dataProviders": [
@@ -13,15 +13,15 @@
   "unemployment": 4.1,
   "credit_card_apr": 20.94,
   "consumer_sentiment": 49.5,
-  "treasury_yield_10y": 4.7,
-  "jobless_claims_weekly": 206000,
-  "mortgage_rate_30y": 6.65,
+  "treasury_yield_10y": 4.64,
+  "jobless_claims_weekly": 203000,
+  "mortgage_rate_30y": 6.66,
   "m2_money_supply_yoy": 5.41,
   "cpi_annual": 3.36,
   "cpi_food_yoy": 2.68,
   "cpi_shelter_yoy": 3.18,
   "cpi_energy_yoy": 14.73,
-  "oil_price_brent": 95.29,
+  "oil_price_brent": 88.24,
   "gas_price_us": 4.22,
   "tariff_household_annual": 2689,
   "sources": {

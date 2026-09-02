@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-01",
-  "lastUpdatedISO": "2026-09-01T12:11:12.536Z",
+  "lastUpdated": "2026-09-02",
+  "lastUpdatedISO": "2026-09-02T11:48:15.224Z",
   "successRate": "15/15",
   "coverageGeography": "United States (oil price is global Brent benchmark)",
   "dataProviders": [
@@ -8,12 +8,12 @@
     "BLS (Dept of Labor)",
     "EIA (Dept of Energy)"
   ],
-  "recession_probability": 0.6,
+  "recession_probability": 0.76,
   "fed_rate": 3.63,
   "unemployment": 4.1,
   "credit_card_apr": 20.94,
   "consumer_sentiment": 55.2,
-  "treasury_yield_10y": 4.73,
+  "treasury_yield_10y": 4.75,
   "jobless_claims_weekly": 203000,
   "mortgage_rate_30y": 6.66,
   "m2_money_supply_yoy": 5.41,
@@ -22,7 +22,7 @@
   "cpi_shelter_yoy": 3.18,
   "cpi_energy_yoy": 14.73,
   "oil_price_brent": 88.24,
-  "gas_price_us": 4.22,
+  "gas_price_us": 4.21,
   "tariff_household_annual": 2689,
   "sources": {
     "recession_probability": "FRED: RECPROUSM156N — NY Fed probit model",

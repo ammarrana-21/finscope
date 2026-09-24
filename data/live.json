@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-23",
-  "lastUpdatedISO": "2026-09-23T12:22:40.941Z",
+  "lastUpdated": "2026-09-24",
+  "lastUpdatedISO": "2026-09-24T12:22:37.226Z",
   "successRate": "15/15",
   "coverageGeography": "United States (oil price is global Brent benchmark)",
   "dataProviders": [
@@ -21,7 +21,7 @@
   "cpi_food_yoy": 2.19,
   "cpi_shelter_yoy": 3.04,
   "cpi_energy_yoy": 16.28,
-  "oil_price_brent": 130.8,
+  "oil_price_brent": 114.89,
   "gas_price_us": 4.61,
   "tariff_household_annual": 2695,
   "sources": {
